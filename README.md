@@ -164,7 +164,7 @@ Please note that validation affects performance so only use it in case of proble
 
 ## Symfony integration
 
-The [zoujingli/qrcode-bundle](https://github.com/zoujingli/qrcode-bundle)
+The [endroid/qr-code-bundle](https://github.com/endroid/qr-code-bundle)
 integrates the QR code library in Symfony for an even better experience.
 
 * Configure your defaults (like image size, default writer etc.)
@@ -172,7 +172,7 @@ integrates the QR code library in Symfony for an even better experience.
 * Generate QR codes for defined configurations via URL like /qr-code/<config>/Hello
 * Generate QR codes or URLs directly from Twig using dedicated functions
 
-Read the [bundle documentation](https://github.com/zoujingli/qrcode-bundle)
+Read the [bundle documentation](https://github.com/endroid/qr-code-bundle)
 for more information.
 
 ## Versioning
