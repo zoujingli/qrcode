@@ -29,27 +29,21 @@ $ composer require zoujingli/qrcode
 ## Usage: using the builder
 
 ```php
-use Endroid\QrCode\Builder\Builder;
-use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
-use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
-use Endroid\QrCode\Label\Font\NotoSans;
-use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
-use Endroid\QrCode\Writer\PngWriter;
 
-$result = Builder::create()
-    ->writer(new PngWriter())
+// 字段包有点大，安装包直接去掉了，需要的时候再配置
+$result = Endroid\QrCode\Builder\Builder::create()
+    ->writer(new Endroid\QrCode\Writer\PngWriter())
     ->writerOptions([])
     ->data('Custom QR code contents')
-    ->encoding(new Encoding('UTF-8'))
-    ->errorCorrectionLevel(new ErrorCorrectionLevelHigh())
+    ->encoding(new Endroid\QrCode\Encoding\Encoding('UTF-8'))
+    ->errorCorrectionLevel(new Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh())
     ->size(300)
     ->margin(10)
-    ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-    ->logoPath(__DIR__.'/assets/icon.png')
+    ->roundBlockSizeMode(new Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin())
+    ->logoPath(__DIR__.'/icon.png')
     ->labelText('This is the label')
-    ->labelFont(new NotoSans(20))
-    ->labelAlignment(new LabelAlignmentCenter())
+     ->labelFont(new Endroid\QrCode\Label\Font\OpenSans(20))
+    ->labelAlignment(new Endroid\QrCode\Label\Alignment\LabelAlignmentCenter())
     ->validateResult(false)
     ->build();
 ```
@@ -57,15 +51,7 @@ $result = Builder::create()
 ## Usage: without using the builder
 
 ```php
-use Endroid\QrCode\Color\Color;
-use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
-use Endroid\QrCode\QrCode;
-use Endroid\QrCode\Label\Label;
-use Endroid\QrCode\Logo\Logo;
-use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
-use Endroid\QrCode\Writer\PngWriter;
-use Endroid\QrCode\Writer\ValidationException;
+use Endroid\QrCode\Color\Color;use Endroid\QrCode\Encoding\Encoding;use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;use Endroid\QrCode\Label\Label;use Endroid\QrCode\Logo\Logo;use Endroid\QrCode\QrCode;use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;use Endroid\QrCode\Writer\PngWriter;use Endroid\QrCode\Writer\ValidationException;
 
 $writer = new PngWriter();
 
@@ -80,12 +66,10 @@ $qrCode = QrCode::create('Life is too short to be generating QR codes')
     ->setBackgroundColor(new Color(255, 255, 255));
 
 // Create generic logo
-$logo = Logo::create(__DIR__.'/assets/icon.png')
-    ->setResizeToWidth(50);
+$logo = Logo::create(__DIR__.'/icon.png')->setResizeToWidth(50);
 
 // Create generic label
-$label = Label::create('Label')
-    ->setTextColor(new Color(255, 0, 0));
+$label = Label::create('Label')->setTextColor(new Color(255, 0, 0));
 
 $result = $writer->write($qrCode, $logo, $label);
 

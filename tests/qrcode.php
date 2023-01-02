@@ -4,7 +4,7 @@ use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
 use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
-use Endroid\QrCode\Label\Font\NotoSans;
+use Endroid\QrCode\Label\Font\OpenSans;
 use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 use Endroid\QrCode\Writer\PngWriter;
 
@@ -23,7 +23,7 @@ $result = Builder::create()
     ->logoResizeToWidth(65)
     ->logoResizeToHeight(65)
     ->labelText('This is the label')
-    ->labelFont(new NotoSans(20))
+    ->labelFont(new OpenSans(20))
     ->labelAlignment(new LabelAlignmentCenter())
     ->validateResult(false)
     ->build();
