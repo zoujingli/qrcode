@@ -9,7 +9,6 @@
 > 4. 目前已测试`PHP`环境有`PHP7.1` `PHP7.4`；
 
 [![Latest Stable Version](http://img.shields.io/packagist/v/zoujingli/qrcode.svg)](https://packagist.org/packages/zoujingli/qrcode)
-[![Build Status](https://github.com/zoujingli/qrcode/workflows/CI/badge.svg)](https://github.com/zoujingli/qrcode/actions)
 [![Total Downloads](http://img.shields.io/packagist/dt/zoujingli/qrcode.svg)](https://packagist.org/packages/zoujingli/qrcode)
 [![Monthly Downloads](http://img.shields.io/packagist/dm/zoujingli/qrcode.svg)](https://packagist.org/packages/zoujingli/qrcode)
 [![License](http://img.shields.io/packagist/l/zoujingli/qrcode.svg)](https://packagist.org/packages/zoujingli/qrcode)
@@ -49,7 +48,7 @@ $result = Builder::create()
     ->size(300)
     ->margin(10)
     ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
-    ->logoPath(__DIR__.'/assets/symfony.png')
+    ->logoPath(__DIR__.'/assets/icon.png')
     ->labelText('This is the label')
     ->labelFont(new NotoSans(20))
     ->labelAlignment(new LabelAlignmentCenter())
@@ -83,7 +82,7 @@ $qrCode = QrCode::create('Life is too short to be generating QR codes')
     ->setBackgroundColor(new Color(255, 255, 255));
 
 // Create generic logo
-$logo = Logo::create(__DIR__.'/assets/symfony.png')
+$logo = Logo::create(__DIR__.'/assets/icon.png')
     ->setResizeToWidth(50);
 
 // Create generic label
@@ -110,8 +109,6 @@ $result->saveToFile(__DIR__.'/qrcode.png');
 // Generate a data URI to include image data inline (i.e. inside an <img> tag)
 $dataUri = $result->getDataUri();
 ```
-
-![QR Code](https://endroid.nl/qr-code/default/Life%20is%20too%20short%20to%20be%20generating%20QR%20codes)
 
 ### Writer options
 
