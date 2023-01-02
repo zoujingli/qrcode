@@ -1,10 +1,10 @@
 # QR Code
 
 > **为满足在`PHP7`运行需求，对原仓库进行如下修改：**
-> 1. 修改代码语法最低可在`PHP7.1`版本上运行；
-> 2. 去除原仓库的部分测试代码，减少优化包体积；
-> 3. 原仓库的开源协议不变，未增加额外开发代码；
-> 4. 目前已测试`PHP`环境有`PHP7.1` `PHP7.4`；
+> 1. 修改代码语法最低可在`PHP7.1`上运行；
+> 2. 原仓库的开源协议不变，未增加额外功能代码；
+> 3. 目前已测试`PHP`环境有`PHP7.1` `PHP7.2` `PHP7.4`；
+> 4. 去除原仓库的部分测试代码及字体文件，减少优化包体积；
 
 [![Latest Stable Version](http://img.shields.io/packagist/v/zoujingli/qrcode.svg)](https://packagist.org/packages/zoujingli/qrcode)
 [![Total Downloads](http://img.shields.io/packagist/dt/zoujingli/qrcode.svg)](https://packagist.org/packages/zoujingli/qrcode)
@@ -30,7 +30,6 @@ $ composer require zoujingli/qrcode
 
 ```php
 
-// 字段包有点大，安装包直接去掉了，需要的时候再配置
 $result = Endroid\QrCode\Builder\Builder::create()
     ->writer(new Endroid\QrCode\Writer\PngWriter())
     ->writerOptions([])
@@ -51,25 +50,24 @@ $result = Endroid\QrCode\Builder\Builder::create()
 ## Usage: without using the builder
 
 ```php
-use Endroid\QrCode\Color\Color;use Endroid\QrCode\Encoding\Encoding;use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;use Endroid\QrCode\Label\Label;use Endroid\QrCode\Logo\Logo;use Endroid\QrCode\QrCode;use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;use Endroid\QrCode\Writer\PngWriter;use Endroid\QrCode\Writer\ValidationException;
-
-$writer = new PngWriter();
+$writer = new Endroid\QrCode\Writer\PngWriter();
 
 // Create QR code
-$qrCode = QrCode::create('Life is too short to be generating QR codes')
-    ->setEncoding(new Encoding('UTF-8'))
-    ->setErrorCorrectionLevel(new ErrorCorrectionLevelLow())
+$qrCode = Endroid\QrCode\QrCode::create('Life is too short to be generating QR codes')
+    ->setEncoding(new Endroid\QrCode\Encoding\Encoding('UTF-8'))
+    ->setErrorCorrectionLevel(new Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow())
     ->setSize(300)
     ->setMargin(10)
-    ->setRoundBlockSizeMode(new RoundBlockSizeModeMargin())
-    ->setForegroundColor(new Color(0, 0, 0))
-    ->setBackgroundColor(new Color(255, 255, 255));
+    ->setRoundBlockSizeMode(new Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin())
+    ->setForegroundColor(new Endroid\QrCode\Color\Color(0, 0, 0))
+    ->setBackgroundColor(new Endroid\QrCode\Color\Color(255, 255, 255));
 
 // Create generic logo
-$logo = Logo::create(__DIR__.'/icon.png')->setResizeToWidth(50);
+$logo = Endroid\QrCode\Logo\Logo::create(__DIR__.'/icon.png')->setResizeToWidth(50);
 
 // Create generic label
-$label = Label::create('Label')->setTextColor(new Color(255, 0, 0));
+$label = Endroid\QrCode\Label\Label::create('Label')
+->setTextColor(new Endroid\QrCode\Color\Color(255, 0, 0));
 
 $result = $writer->write($qrCode, $logo, $label);
 
