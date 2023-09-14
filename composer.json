@@ -2,7 +2,7 @@
   "type": "library",
   "name": "zoujingli/qrcode",
   "license": "MIT",
-  "description": "Endroid QR Code For ThinkAdmin",
+  "description": "Endroid QrCode for ThinkAdmin",
   "homepage": "https://github.com/zoujingli/qrcode",
   "keywords": [
     "qrcode",
