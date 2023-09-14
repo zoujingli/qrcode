@@ -23,7 +23,7 @@ $result = Builder::create()
     ->logoResizeToWidth(65)
     ->logoResizeToHeight(65)
     ->labelText('This is the label')
-    ->labelFont(new OpenSans(20))
+//    ->labelFont(new OpenSans(20))
     ->labelAlignment(new LabelAlignmentCenter())
     ->validateResult(false)
     ->build();
